@@ -23,8 +23,6 @@ function checksExistsUserAccount(request, response, next) {
 function checksCreateTodosUserAvailability(request, response, next) {
   const { user } = request
   const limitFree = 10
-
-  //Test to user free
   if (!user.pro) {
     //Test to current quantity
     if (user.todos.length >= limitFree) {
@@ -70,7 +68,6 @@ function findUserById(request, response, next) {
 
 app.post('/users', (request, response) => {
   const { name, username } = request.body;
-
   const usernameAlreadyExists = users.some((user) => user.username === username);
 
   if (usernameAlreadyExists) {
